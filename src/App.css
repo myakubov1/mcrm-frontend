@@ -1,0 +1,33 @@
+.sk-rotating-plane {
+  width: 3em;
+  height: 3em;
+  margin: auto;
+  background-color: #0d6efd;
+  -webkit-animation: sk-rotating-plane 2s infinite ease-in-out;
+  animation: sk-rotating-plane 2s infinite ease-in-out;
+}
+
+
+@-webkit-keyframes sk-rotating-plane {
+  0% {
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+  }
+  50% {
+    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+  }
+  100% {
+    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+  }
+}
+
+@keyframes sk-rotating-plane {
+  0% {
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+  }
+  50% {
+    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+  }
+  100% {
+    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+  }
+}
