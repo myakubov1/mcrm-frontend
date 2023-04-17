@@ -1,7 +1,6 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import jwtDecode from 'jwt-decode';
-import account from '../_mock/account';
 
 import { ApiUrl } from '../services/api';
 import Spinner from './Spinner';
@@ -86,7 +85,7 @@ function Messages() {
 function Message({ author, content, date }) {
   return (
     <div className="d-flex align-items-center border-bottom py-3">
-      <img className="rounded-circle flex-shrink-0" src={account.photoURL} alt="" style={{ width: '40px', height: '40px' }} />
+      <img className="rounded-circle flex-shrink-0" alt="" style={{ width: '40px', height: '40px' }} />
       <div className="w-100 ms-3">
         <div className="d-flex w-100 justify-content-between">
           <h6 className="mb-0">{author}</h6>

@@ -1,29 +1,21 @@
+// @mui
 import {
-  Box, Button, Card, CardHeader, Container, Grid, Link, Stack, Typography,
+  Box, Card, Grid, Link, Stack, Typography,
 } from '@mui/material';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import * as React from 'react';
-import MenuIcon from '@mui/icons-material/Menu';
+// @faker
 import { faker } from '@faker-js/faker';
 
-export default function CalendarWidget() {
+export default function Appointments() {
   return (
     <Card sx={{
       bgcolor: (theme) => theme.palette.grey[200],
     }}
     >
       <Grid container spacing={2}>
-        <Grid item xs={4} sm={4} md={4}>
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DateCalendar
-              views={['day']}
-              disablePast
-            />
-          </LocalizationProvider>
+        <Grid item xs={4} sm={4} md={3}>
+          <div>123</div>
         </Grid>
-        <Grid item xs={8} sm={8} md={8} sx={{ maxHeight: '350px', overflowX: 'auto' }}>
+        <Grid item xs={8} sm={8} md={9} sx={{ maxHeight: '350px', overflowX: 'auto' }}>
           <Box id="test">
             <AppNewsUpdate
               list={[...Array(10)].map((_, index) => ({
@@ -46,7 +38,6 @@ function NewsItem({ news }) {
     image, title, description, postedAt,
   } = news;
 
-  console.log(news);
   return (
     <Stack direction="row" alignItems="center" spacing={2}>
       <Box

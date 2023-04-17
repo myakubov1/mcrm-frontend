@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Typography, Container, Grid } from '@mui/material';
 import Messages from '../components/Messages';
 import PatientsTable from '../components/PatientsTable';
-import CalendarWidget from '../components/CalendarWidget';
+import Appointments from '../components/Appointments';
 import Tasks from '../components/Tasks';
 import WidgetSummary from '../components/WidgetSummary';
 
@@ -33,23 +33,15 @@ export default function Dashboard() {
         </Grid>
 
         <Grid item xs={12} sm={12} md={12}>
+          <Appointments />
+        </Grid>
+
+        <Grid item xs={12} sm={12} md={12}>
           <PatientsTable />
         </Grid>
 
         <Grid item xs={12} sm={12} md={12}>
-          <CalendarWidget />
-        </Grid>
-
-        <Grid item xs={12} sm={6} md={8}>
-          <Tasks list={[
-            { id: '1', label: 'Create FireStone Logo' },
-            { id: '2', label: 'Add SCSS and JS files if required' },
-            { id: '3', label: 'Stakeholder Meeting' },
-            { id: '4', label: 'Scoping & Estimations' },
-            { id: '5', label: 'Sprint Showcase' },
-            { id: '6', label: 'Add todos' },
-          ]}
-          />
+          <Tasks />
         </Grid>
       </Grid>
     </Container>

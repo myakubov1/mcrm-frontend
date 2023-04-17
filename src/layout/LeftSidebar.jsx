@@ -9,7 +9,6 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 import GroupIcon from '@mui/icons-material/Group';
 import useResponsive from '../hooks/useResponsive';
 import Logo from '../components/Logo';
-import account from '../_mock/account';
 // ----------------------------------------------------------------------
 
 const NAV_WIDTH = 280;
@@ -113,13 +112,13 @@ export default function LeftSidebar({ openNav, onCloseNav }) {
       <Box sx={{ mb: 5, mx: 2.5 }}>
         <Link underline="none">
           <StyledAccount>
-            <Avatar src={account.photoURL} alt="photoURL" />
+            <Avatar alt="photoURL" />
             <Box sx={{ ml: 2 }}>
               <Typography variant="subtitle2" sx={{ color: 'text.primary' }}>
-                {account.displayName}
+                Max
               </Typography>
               <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                {account.role}
+                Admin
               </Typography>
             </Box>
           </StyledAccount>

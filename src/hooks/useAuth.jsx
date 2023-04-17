@@ -10,8 +10,6 @@ const UserContext = createContext();
 export function UserProvider({ children }) {
   const navigate = useNavigate();
   const [token, setToken] = useState(sessionStorage.getItem('token'));
-
-  const [roles, setRoles] = useState(null);
   const [error, setError] = useState(null);
 
   const login = async (username, password) => {
@@ -25,7 +23,6 @@ export function UserProvider({ children }) {
       .then((response) => {
         console.log(response);
         setToken(response.data.token);
-        setRoles(response.data.roles);
 
         sessionStorage.setItem('token', response.data.token);
         navigate('/dashboard');
@@ -38,7 +35,6 @@ export function UserProvider({ children }) {
 
   const logout = () => {
     setToken(null);
-    setRoles(null);
     sessionStorage.removeItem('token');
     navigate('/login');
   };
@@ -46,12 +42,11 @@ export function UserProvider({ children }) {
   const value = useMemo(
     () => ({
       token,
-      roles,
       error,
       login,
       logout,
     }),
-    [token, roles, error],
+    [token, error],
   );
 
   return (
