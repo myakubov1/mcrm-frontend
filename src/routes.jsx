@@ -14,6 +14,7 @@ import Layout from './layout/Layout';
 import PrivateRoute from './middleware/PrivateRoute';
 // hooks
 import { useAuth } from './hooks/useAuth';
+import ClientSummary from './pages/ClientProfile/ClientSummary';
 
 // ----------------------------------------------------------------------
 
@@ -28,8 +29,8 @@ export default function Router() {
       <Route path="/" element={<Layout />}>
         <Route index element={<PrivateRoute><Dashboard /></PrivateRoute>} />
         <Route path="dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
-        <Route path="testpage" element={<PrivateRoute><TestPage /></PrivateRoute>} />
-        <Route path="patients" element={<PrivateRoute><Patients /></PrivateRoute>} />
+        <Route path="clients" element={<PrivateRoute><Patients /></PrivateRoute>} />
+        <Route path="/clients/:_id" element={<ClientSummary />} />
       </Route>
     </Routes>
   );

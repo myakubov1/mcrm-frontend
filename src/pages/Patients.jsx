@@ -1,11 +1,9 @@
 import { Container } from '@mui/material';
-import PatientsTable from '../components/PatientsTable';
+import PatientsTable from '../components/ClientsTable';
 
 function Patients() {
   return (
-    <Container maxWidth="xl">
-      <PatientsTable />
-    </Container>
+    <PatientsTable />
   );
 }
 export default Patients;

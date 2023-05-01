@@ -1,47 +1,26 @@
-import { styled } from '@mui/material/styles';
 import {
-  Box, Stack, AppBar, Toolbar, IconButton,
+  Box, Stack, AppBar, Toolbar, IconButton, Badge, SvgIcon, Typography,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-
-// ----------------------------------------------------------------------
-
-const NAV_WIDTH = 280;
-const HEADER_MOBILE = 64;
-const HEADER_DESKTOP = 92;
-
-const StyledRoot = styled(AppBar)(({ theme }) => ({
-  background: theme.palette.primary.light,
-  color: theme.palette.background.default,
-  boxShadow: 'none',
-  [theme.breakpoints.up('lg')]: {
-    width: `calc(100% - ${NAV_WIDTH + 1}px)`,
-  },
-}));
-
-const StyledToolbar = styled(Toolbar)(({ theme }) => ({
-  minHeight: HEADER_MOBILE,
-  [theme.breakpoints.up('lg')]: {
-    minHeight: HEADER_DESKTOP,
-    padding: theme.spacing(0, 5),
-  },
-}));
+import useMediaQuery from '@mui/material/useMediaQuery';
+import Button from '@mui/material/Button';
 
 // ----------------------------------------------------------------------
 
 export default function Header({ onOpenNav }) {
+  const isLgScreen = useMediaQuery('(min-width:1200px)');
+
   return (
-    <StyledRoot>
-      <StyledToolbar>
+    <AppBar sx={{ width: isLgScreen ? 'calc(100% - 280px)' : '100%' }}>
+      <Toolbar>
         <IconButton
           onClick={onOpenNav}
           sx={{
             mr: 1,
-            color: 'text.primary',
             display: { lg: 'none' },
           }}
         >
-          <MenuIcon color="secondary" />
+          <MenuIcon />
         </IconButton>
         <div>Searchbar</div>
         <Box sx={{ flexGrow: 1 }} />
@@ -53,11 +32,13 @@ export default function Header({ onOpenNav }) {
             sm: 1,
           }}
         >
-          <div>Language</div>
+          <Box>
+            <Button><Typography color="red">Lang</Typography></Button>
+          </Box>
           <div>NotificationsPopover</div>
           <div>AccountPopover</div>
         </Stack>
-      </StyledToolbar>
-    </StyledRoot>
+      </Toolbar>
+    </AppBar>
   );
 }
