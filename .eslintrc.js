@@ -32,5 +32,6 @@ module.exports = {
     'react/no-unstable-nested-components': 'off',
     'max-len': 'off',
     'react/no-array-index-key': 'off',
+    'react/destructuring-assignment': 'off',
   },
 };
