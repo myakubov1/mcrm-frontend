@@ -48,7 +48,7 @@ const navConfig = [
   },
   {
     title: 'user',
-    path: '/patients',
+    path: '/clients',
     icon: <GroupIcon />,
   },
   {

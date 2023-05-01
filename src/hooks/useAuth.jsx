@@ -3,7 +3,7 @@ import {
 } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { ApiUrl } from '../services/api';
+import apis from '../services/api';
 
 const UserContext = createContext();
 
@@ -17,11 +17,9 @@ export function UserProvider({ children }) {
       username,
       password,
     };
-    console.log(data);
     await axios
-      .post(`${ApiUrl}/employee/login`, data)
+      .post(apis.employee.loginEmployee, data)
       .then((response) => {
-        console.log(response);
         setToken(response.data.token);
 
         sessionStorage.setItem('token', response.data.token);

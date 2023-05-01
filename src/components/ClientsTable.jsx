@@ -16,17 +16,19 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import CircularProgress from '@mui/material/CircularProgress';
+import Button from '@mui/material/Button';
+import { Link } from 'react-router-dom';
 import apis from '../services/api';
 
-export default function Appointments() {
-  const [appointments, setAppointments] = useState([]);
+export default function ClientsTable() {
+  const [clients, setClients] = useState([]);
   const [error, setError] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    axios.get(apis.appointment.getAppointments)
+    axios.get(apis.clients.getClients)
       .then((response) => {
-        setAppointments(response.data.appointments);
+        setClients(response.data);
         setIsLoading(false);
       })
       .catch((e) => {
@@ -42,7 +44,7 @@ export default function Appointments() {
         error ? <Alert severity="error">{error}</Alert> : (
           <Grid container spacing={2}>
             <Grid item xs={12} sm={12} md={12} sx={{ maxHeight: '350px', overflowX: 'auto' }}>
-              <NewsItem appointments={appointments} />
+              <NewsItem clients={clients} />
             </Grid>
           </Grid>
         )
@@ -51,7 +53,7 @@ export default function Appointments() {
   );
 }
 
-function NewsItem({ appointments }) {
+function NewsItem({ clients }) {
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleClick = (event) => {
@@ -71,19 +73,23 @@ function NewsItem({ appointments }) {
         <TableHead>
           <TableRow>
             <TableCell>Client</TableCell>
-            <TableCell>Date</TableCell>
-            <TableCell>Reason</TableCell>
+            <TableCell>Passport</TableCell>
+            <TableCell>PatientID</TableCell>
+            <TableCell>CellPhone</TableCell>
+            <TableCell>Email</TableCell>
+            <TableCell>CID</TableCell>
             <TableCell align="right" />
           </TableRow>
         </TableHead>
         <TableBody>
-          {appointments.map((appointment) => (
-            <TableRow key={appointment._id}>
-              <TableCell>
-                {appointment.client.firstName}
-              </TableCell>
-              <TableCell>{appointment.appointmentDate}</TableCell>
-              <TableCell>{appointment.appointmentReason}</TableCell>
+          {clients.map((client) => (
+            <TableRow key={client._id}>
+              <TableCell>{`${client.firstName} ${client.lastName}`}</TableCell>
+              <TableCell>{client.passport}</TableCell>
+              <TableCell>{client.personalInfo.patientID}</TableCell>
+              <TableCell>{client.contactInfo.cellPhone}</TableCell>
+              <TableCell>{client.contactInfo.email}</TableCell>
+              <TableCell><Link to={`/clients/${client._id}`}>{client._id}</Link></TableCell>
               <TableCell align="right">
                 <IconButton aria-describedby={id} variant="contained" onClick={handleClick}>
                   <MoreVertIcon />
@@ -98,7 +104,7 @@ function NewsItem({ appointments }) {
                     horizontal: 'left',
                   }}
                 >
-                  <Typography sx={{ background: 'red', boxShadow: 0, p: 2 }}>The content of the Popover.</Typography>
+                  <Button sx={{ boxShadow: 0, p: 2 }}><Link to={`/clients/${client._id}`}>{client._id}</Link></Button>
                 </Popover>
               </TableCell>
             </TableRow>

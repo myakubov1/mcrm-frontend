@@ -4,32 +4,17 @@ import { Outlet } from 'react-router-dom';
 // mui
 import { styled } from '@mui/material/styles';
 // layout
+import Box from '@mui/material/Box';
 import Header from './Header';
 import LeftSidebar from './LeftSidebar';
 
 // ----------------------------------------------------------------------
-
-const APP_BAR_MOBILE = 64;
-const APP_BAR_DESKTOP = 92;
 
 const StyledRoot = styled('div')({
   display: 'flex',
   minHeight: '100%',
   overflow: 'hidden',
 });
-
-const Main = styled('div')(({ theme }) => ({
-  flexGrow: 1,
-  overflow: 'auto',
-  minHeight: '100%',
-  paddingTop: APP_BAR_MOBILE + 24,
-  paddingBottom: theme.spacing(10),
-  [theme.breakpoints.up('lg')]: {
-    paddingTop: APP_BAR_DESKTOP + 24,
-    paddingLeft: theme.spacing(2),
-    paddingRight: theme.spacing(2),
-  },
-}));
 
 // ----------------------------------------------------------------------
 
@@ -39,9 +24,9 @@ export default function Layout() {
     <StyledRoot>
       <Header onOpenNav={() => setOpen(true)} />
       <LeftSidebar openNav={open} onCloseNav={() => setOpen(false)} />
-      <Main>
+      <Box sx={{ width: '100%', paddingTop: 10, paddingX: 2 }}>
         <Outlet />
-      </Main>
+      </Box>
     </StyledRoot>
   );
 }
